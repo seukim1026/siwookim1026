@@ -21,6 +21,8 @@ body { margin: 0; overflow-x: clip; font-family: 'Figtree', 'Gothic A1', sans-se
 @media (max-width: 720px) { .nav a:not(.btn):not([data-cart]) { display: none; } }
 a { color: var(--color-accent-700); }
 a:hover { color: var(--color-accent-800); }
+.hk-motion { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 32px; background: #F5EAD8; }
+@media (max-width: 640px) { .hk-motion { aspect-ratio: 10 / 13; } }
 </style>
 </helmet>
 
@@ -63,6 +65,10 @@ a:hover { color: var(--color-accent-800); }
         <div style="position: absolute; left: -8px; bottom: 28px; background: var(--color-surface, #fff); border-radius: 999px; padding: 12px 22px; box-shadow: var(--shadow-md); white-space: nowrap; font-weight: 700; font-size: 15px; color: var(--color-accent-2-800);">단백질 · 채소 · 곡류</div>
       </div>
     </sc-if>
+  </section>
+
+  <section id="motion" style="padding: 0 0 72px;">
+    <iframe class="hk-motion" src="한끼핏 모션.html#embed" title="한끼핏 균형 한끼 모션" loading="lazy"></iframe>
   </section>
 
   <section id="about" style="padding: 72px 0 96px; scroll-margin-top: 40px;">
