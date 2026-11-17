@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-1d34b4bf-294c-4eaa-b08c-8a9e6a8540fd/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;600;700&display=swap">
+<script src="_ds/organic-1d34b4bf-294c-4eaa-b08c-8a9e6a8540fd/_ds_bundle.js"></script>
+<script src="./kits.js"></script>
+<style>
+html { overflow-x: clip; }
+body { margin: 0; overflow-x: clip; font-family: 'Figtree', 'Gothic A1', sans-serif; word-break: keep-all; text-wrap: pretty; }
+.btn, .tag, .nav a { white-space: nowrap; flex: none; }
+@media (max-width: 640px) { .nav a:not(.btn):not(.nav-brand) { display: none; } }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+</style>
+</helmet>
+
+<nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px); position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--color-bg); box-shadow: var(--shadow-sm);">
+  <a href="한끼핏 홈페이지.dc.html" class="nav-brand" style="font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 24px; text-decoration: none; color: var(--color-text);">한끼핏</a>
+  <div style="display: flex; gap: 8px; align-items: center; font-size: 14px; font-weight: 600;">
+    <a href="장바구니.dc.html" style="text-decoration: none; color: color-mix(in srgb, var(--color-text) 70%, transparent);">장바구니</a>
+    <span style="color: color-mix(in srgb, var(--color-text) 40%, transparent);">›</span>
+    <span style="color: var(--color-accent-700);">결제</span>
+    <span style="color: color-mix(in srgb, var(--color-text) 40%, transparent);">›</span>
+    <span style="color: color-mix(in srgb, var(--color-text) 70%, transparent);">완료</span>
+  </div>
+</nav>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 64px clamp(20px, 5vw, 72px) 0; min-height: 70vh;">
+
+  <section style="padding: 72px 0 32px;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; font-weight: 700; color: var(--color-accent-700);">CHECKOUT</span>
+    <h1 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: clamp(40px, 5vw, 64px); line-height: 1.12; margin: 16px 0 0;">결제하기</h1>
+  </section>
+
+  <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: 16px 0 96px;">
+      <div style="background: var(--color-accent-2-100); border-radius: calc(2.5 * var(--radius-lg)); padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--color-accent-2-500); color: var(--color-bg); display: grid; place-items: center;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+        </div>
+        <h2 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: clamp(28px, 3.4vw, 40px); line-height: 1.25; margin: 8px 0 0;">결제가 완료됐어요</h2>
+        <div style="background: var(--color-bg); border-radius: calc(1.5 * var(--radius-lg)); padding: 20px 24px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 28px; font-size: 15px; max-width: 520px; width: 100%; box-sizing: border-box;">
+          <span style="font-weight: 600; color: color-mix(in srgb, var(--color-text) 70%, transparent);">주문번호</span><span style="font-weight: 700;">{{ orderNo }}</span>
+          <span style="font-weight: 600; color: color-mix(in srgb, var(--color-text) 70%, transparent);">결제 금액</span><span style="font-weight: 700;">{{ paidTotal }}</span>
+          <span style="font-weight: 600; color: color-mix(in srgb, var(--color-text) 70%, transparent);">결제 수단</span><span>{{ paidMethod }}</span>
+          <span style="font-weight: 600; color: color-mix(in srgb, var(--color-text) 70%, transparent);">도착 예정</span><span>{{ paidDate }}</span>
+        </div>
+        <p style="font-size: 15px; line-height: 1.75; margin: 0; max-width: 34em;">냉장 상태로 포장해 보내드려요. 받으신 뒤 4일 안에 드세요.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+          <a href="밀키트 스토어.dc.html" class="btn btn-primary" style="text-decoration: none;">밀키트 더 둘러보기</a>
+          <a href="한끼핏 홈페이지.dc.html" class="btn btn-ghost" style="text-decoration: none;">홈으로</a>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: 16px 0 96px;">
+      <div style="background: var(--color-surface); border-radius: calc(2.5 * var(--radius-lg)); padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+        <h2 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 36px); line-height: 1.25; margin: 0;">결제할 상품이 없어요</h2>
+        <p style="font-size: 16px; line-height: 1.75; margin: 0;">장바구니에 밀키트를 담은 뒤 결제를 진행해 주세요.</p>
+        <a href="밀키트 스토어.dc.html" class="btn btn-primary" style="text-decoration: none; margin-top: 8px;">밀키트 고르러 가기</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+    <section style="padding: 16px 0 96px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+      <div style="display: flex; flex-direction: column; gap: 20px; flex: 2 1 480px; min-width: 0;">
+
+        <div style="background: var(--color-surface); border-radius: calc(2 * var(--radius-lg)); padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent); color: var(--color-bg); display: grid; place-items: center; font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 17px;">1</span>
+            <h2 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: 22px; margin: 0;">배송 정보</h2>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+            <label class="field" style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-weight: 600; font-size: 14px;">받는 분</span>
+              <input class="input" type="text" placeholder="이름" value="{{ f.name }}" onChange="{{ on.name }}">
+            </label>
+            <label class="field" style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-weight: 600; font-size: 14px;">연락처</span>
+              <input class="input" type="tel" inputmode="numeric" placeholder="010-0000-0000" value="{{ f.phone }}" onChange="{{ on.phone }}">
+            </label>
+          </div>
+          <label class="field" style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-weight: 600; font-size: 14px;">주소</span>
+            <div style="display: flex; gap: 10px;">
+              <input class="input" type="text" placeholder="우편번호" value="{{ f.zip }}" onChange="{{ on.zip }}" style="flex: 0 1 160px; min-width: 0;">
+              <button type="button" class="btn btn-secondary" onClick="{{ findAddr }}">주소 찾기</button>
+            </div>
+            <input class="input" type="text" placeholder="기본 주소" value="{{ f.addr1 }}" onChange="{{ on.addr1 }}">
+            <input class="input" type="text" placeholder="상세 주소 (동·호수)" value="{{ f.addr2 }}" onChange="{{ on.addr2 }}">
+          </label>
+          <label class="field" style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-weight: 600; font-size: 14px;">배송 요청사항</span>
+            <select class="input" value="{{ f.memo }}" onChange="{{ on.memo }}">
+              <option value="문 앞에 놓아주세요">문 앞에 놓아주세요</option>
+              <option value="경비실에 맡겨주세요">경비실에 맡겨주세요</option>
+              <option value="배송 전 연락 주세요">배송 전 연락 주세요</option>
+              <option value="택배함에 넣어주세요">택배함에 넣어주세요</option>
+            </select>
+          </label>
+        </div>
+
+        <div style="background: var(--color-surface); border-radius: calc(2 * var(--radius-lg)); padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent); color: var(--color-bg); display: grid; place-items: center; font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 17px;">2</span>
+            <h2 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: 22px; margin: 0;">받는 날짜</h2>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px;">
+            <sc-for list="{{ dates }}" as="d" hint-placeholder-count="5">
+              <button type="button" onClick="{{ d.select }}" aria-pressed="{{ d.on }}" style="border: 2px solid {{ d.border }}; background: {{ d.bg }}; color: var(--color-text); border-radius: calc(1.25 * var(--radius-lg)); padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; font: inherit;">
+                <span style="font-size: 13px; font-weight: 600;">{{ d.dow }}</span>
+                <span style="font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 20px;">{{ d.day }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <span style="font-size: 13.5px; color: color-mix(in srgb, var(--color-text) 72%, transparent);">새벽 냉장 배송으로 선택한 날 오전 7시 전에 도착해요.</span>
+        </div>
+
+        <div style="background: var(--color-surface); border-radius: calc(2 * var(--radius-lg)); padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent); color: var(--color-bg); display: grid; place-items: center; font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 17px;">3</span>
+            <h2 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: 22px; margin: 0;">결제 수단</h2>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;">
+            <sc-for list="{{ methods }}" as="m" hint-placeholder-count="5">
+              <button type="button" onClick="{{ m.select }}" aria-pressed="{{ m.on }}" style="border: 2px solid {{ m.border }}; background: {{ m.bg }}; color: var(--color-text); border-radius: 999px; padding: 14px 16px; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer;">{{ m.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ isCard }}" hint-placeholder-val="{{ true }}">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px;">
+              <label class="field" style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-weight: 600; font-size: 14px;">카드사</span>
+                <select class="input" value="{{ f.cardCo }}" onChange="{{ on.cardCo }}">
+                  <option value="">카드사 선택</option>
+                  <option value="신한카드">신한카드</option>
+                  <option value="KB국민카드">KB국민카드</option>
+                  <option value="삼성카드">삼성카드</option>
+                  <option value="현대카드">현대카드</option>
+                  <option value="롯데카드">롯데카드</option>
+                  <option value="우리카드">우리카드</option>
+                </select>
+              </label>
+              <label class="field" style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-weight: 600; font-size: 14px;">할부</span>
+                <select class="input" value="{{ f.inst }}" onChange="{{ on.inst }}">
+                  <option value="일시불">일시불</option>
+                  <option value="2개월">2개월</option>
+                  <option value="3개월">3개월</option>
+                  <option value="6개월">6개월</option>
+                </select>
+              </label>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isBank }}" hint-placeholder-val="{{ false }}">
+            <div style="background: var(--color-bg); border-radius: calc(1.25 * var(--radius-lg)); padding: 16px 20px; font-size: 14.5px; line-height: 1.7;">주문 후 안내되는 가상계좌로 24시간 안에 입금해 주세요. 입금이 확인되면 배송을 준비해요.</div>
+          </sc-if>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 4px 8px;">
+          <label style="display: flex; gap: 12px; align-items: center; font-weight: 700; font-size: 15px; cursor: pointer;">
+            <input type="checkbox" checked="{{ allAgree }}" onChange="{{ toggleAll }}" style="width: 20px; height: 20px; accent-color: var(--color-accent);">
+            주문 내용을 확인했으며 아래에 모두 동의해요
+          </label>
+          <sc-for list="{{ agrees }}" as="a" hint-placeholder-count="2">
+            <label style="display: flex; gap: 12px; align-items: center; font-size: 14px; padding-left: 32px; cursor: pointer; color: color-mix(in srgb, var(--color-text) 80%, transparent);">
+              <input type="checkbox" checked="{{ a.on }}" onChange="{{ a.toggle }}" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
+              {{ a.label }}
+            </label>
+          </sc-for>
+        </div>
+      </div>
+
+      <aside style="background: var(--color-bg); border-radius: calc(2 * var(--radius-lg)); padding: 28px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow-md); position: sticky; top: 96px; flex: 1 1 300px; box-sizing: border-box;">
+        <h2 style="font-family: 'Caprasimo', 'Jua', sans-serif; font-weight: var(--font-heading-weight); font-size: 24px; margin: 0;">주문 상품</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+            <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px;">
+              <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                <span style="font-weight: 600;">{{ l.name }}</span>
+                <span style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 70%, transparent);">{{ l.opt }}</span>
+              </div>
+              <span style="font-weight: 600; flex: none;">{{ l.lineTotal }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="height: 1px; background: color-mix(in srgb, var(--color-text) 10%, transparent);"></div>
+        <div style="display: flex; justify-content: space-between; font-size: 15px;"><span>상품 금액</span><span style="font-weight: 600;">{{ subtotal }}</span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 15px;"><span>냉장 배송비</span><span style="font-weight: 600;">{{ shipping }}</span></div>
+        <div style="height: 1px; background: color-mix(in srgb, var(--color-text) 10%, transparent);"></div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-weight: 700;">최종 결제 금액</span><span style="font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 30px; color: var(--color-accent-700);">{{ total }}</span></div>
+        <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+          <div style="background: var(--color-accent-100); color: var(--color-accent-800); border-radius: var(--radius-md); padding: 10px 14px; font-size: 13.5px; font-weight: 600;">{{ error }}</div>
+        </sc-if>
+        <button type="button" class="btn btn-primary btn-block" onClick="{{ pay }}" style="min-height: 52px; font-size: 16px;">{{ payLabel }}</button>
+        <a href="장바구니.dc.html" style="font-size: 14px; font-weight: 600; text-align: center; text-underline-offset: 4px;">장바구니로 돌아가기</a>
+      </aside>
+    </section>
+  </sc-if>
+
+  <footer style="padding: 24px 0 56px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: 14px; color: color-mix(in srgb, var(--color-text) 72%, transparent);">
+    <a href="한끼핏 홈페이지.dc.html" style="font-family: 'Caprasimo', 'Jua', sans-serif; font-size: 18px; color: var(--color-text); text-decoration: none;">한끼핏</a>
+    <span>덜 먹기보다 균형 있게 먹기</span>
+  </footer>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    f: { name: '', phone: '', zip: '', addr1: '', addr2: '', memo: '문 앞에 놓아주세요', cardCo: '', inst: '일시불' },
+    date: 0, method: 'card', agree: [false, false], error: '', done: null
+  };
+  componentDidMount() {
+    if (!window.HANKKI_KITS) this._t = setInterval(() => { if (window.HANKKI_KITS) { clearInterval(this._t); this.forceUpdate(); } }, 50);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const won = v => v.toLocaleString('ko-KR') + '원';
+    const K = window.HANKKI_KITS, P = window.HANKKI_PACKS, s = this.state;
+    if (s.done) return { done: true, isEmpty: false, showForm: false, ...s.done };
+    let raw = []; try { raw = JSON.parse(localStorage.getItem('hankki-cart')) || []; } catch (e) {}
+    if (!K) return { done: false, isEmpty: false, showForm: false };
+    const lines = raw.map(x => {
+      const k = K.find(q => q.id === x.kitId); if (!k) return null;
+      const t = window.HANKKI_PACK_PRICE(k, x.pack) * x.qty;
+      return { name: k.name1 + ' ' + k.name2, opt: P[x.pack].label + ' × ' + x.qty, t, lineTotal: won(t) };
+    }).filter(Boolean);
+    const sub = lines.reduce((a, l) => a + l.t, 0);
+    const ship = sub >= 50000 || sub === 0 ? 0 : 3500;
+    const set = (key) => (e) => this.setState({ f: { ...this.state.f, [key]: e.target.value }, error: '' });
+    const on = {}; Object.keys(s.f).forEach(k => on[k] = set(k));
+    const dows = ['일', '월', '화', '수', '목', '금', '토'];
+    const dates = []; const d = new Date(); d.setDate(d.getDate() + 2);
+    while (dates.length < 5) { if (d.getDay() !== 0 && d.getDay() !== 1) dates.push(new Date(d)); d.setDate(d.getDate() + 1); }
+    const methodsList = [['card', '신용·체크카드'], ['kakao', '카카오페이'], ['naver', '네이버페이'], ['toss', '토스페이'], ['bank', '무통장입금']];
+    const sel = on => ({ border: on ? 'var(--color-accent)' : 'transparent', bg: on ? 'var(--color-accent-100)' : 'var(--color-bg)' });
+    const agreeLabels = ['[필수] 구매 조건 확인 및 결제 진행 동의', '[필수] 개인정보 수집·이용 및 제3자 제공 동의'];
+    const allAgree = s.agree.every(Boolean);
+    const fmtDate = dt => (dt.getMonth() + 1) + '월 ' + dt.getDate() + '일 (' + dows[dt.getDay()] + ')';
+    const methodLabel = methodsList.find(m => m[0] === s.method)[1];
+    return {
+      done: false, isEmpty: lines.length === 0, showForm: lines.length > 0,
+      f: s.f, on, lines, subtotal: won(sub), shipping: ship === 0 ? '무료' : won(ship), total: won(sub + ship),
+      dates: dates.map((dt, i) => ({ dow: (dt.getMonth() + 1) + '/' + dt.getDate(), day: dows[dt.getDay()], on: i === s.date, ...sel(i === s.date), select: () => this.setState({ date: i }) })),
+      methods: methodsList.map(([id, label]) => ({ label, on: id === s.method, ...sel(id === s.method), select: () => this.setState({ method: id, error: '' }) })),
+      isCard: s.method === 'card', isBank: s.method === 'bank',
+      allAgree,
+      toggleAll: () => this.setState({ agree: s.agree.map(() => !allAgree), error: '' }),
+      agrees: agreeLabels.map((label, i) => ({ label, on: s.agree[i], toggle: () => this.setState(st => ({ agree: st.agree.map((v, j) => j === i ? !v : v), error: '' })) })),
+      error: s.error,
+      payLabel: won(sub + ship) + ' 결제하기',
+      findAddr: () => this.setState({ f: { ...this.state.f, zip: '04524', addr1: '서울특별시 중구 세종대로 110' }, error: '' }),
+      pay: () => {
+        const f = this.state.f;
+        let err = '';
+        if (!f.name.trim()) err = '받는 분 이름을 입력해 주세요';
+        else if (f.phone.replace(/\D/g, '').length < 10) err = '연락처를 정확히 입력해 주세요';
+        else if (!f.addr1.trim()) err = '주소를 입력해 주세요';
+        else if (s.method === 'card' && !f.cardCo) err = '카드사를 선택해 주세요';
+        else if (!allAgree) err = '필수 약관에 동의해 주세요';
+        if (err) return this.setState({ error: err });
+        const now = new Date();
+        const no = 'HK' + now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0') + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+        window.HANKKI_CART && window.HANKKI_CART.set([]);
+        this.setState({ done: { orderNo: no, paidTotal: won(sub + ship), paidMethod: methodLabel + (s.method === 'card' ? ' · ' + f.cardCo + ' ' + f.inst : ''), paidDate: fmtDate(dates[s.date]) + ' 오전 7시 전' } });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
